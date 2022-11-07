@@ -13,25 +13,31 @@ export const MoviesAPI = {
     return await response.json();
   },
 
-  async fetchMoviesSearch() {
-    return await fetch(`${defaultURL}search/search-movies?${keyParam}`).json();
+  async fetchMoviesSearch(text = false) {
+    const response = await fetch(
+      `${defaultURL}search/movie?${keyParam}&language=en-US&page=1&include_adult=${text}`
+    );
+    return await response.json();
   },
 
-  async fetchMovieDetails() {
-    return await fetch(
-      `${defaultURL}movies/get-movie-details?${keyParam}`
-    ).json();
+  async fetchMovieDetails(id) {
+    const response = await fetch(
+      `${defaultURL}movie/${id}/credits?${keyParam}`
+    );
+    return await response.json();
   },
 
-  async fetchMovieCredits() {
-    return await fetch(
-      `${defaultURL}movies/get-movie-credits?${keyParam}`
-    ).json();
+  async fetchMovieCredits(id) {
+    const response = await fetch(
+      `${defaultURL}movie/${id}/credits?${keyParam}`
+    );
+    return await response.json();
   },
 
-  async fetchMovieReviews() {
-    return await fetch(
-      `${defaultURL}movies/get-movie-reviews?${keyParam}`
-    ).json();
+  async fetchMovieReviews(id) {
+    const response = await fetch(
+      `${defaultURL}movie/${id}/reviews?${keyParam}`
+    );
+    return await response.json();
   },
 };
