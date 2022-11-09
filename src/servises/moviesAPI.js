@@ -15,7 +15,7 @@ export const MoviesAPI = {
 
   async fetchMoviesSearch(text = false) {
     const response = await fetch(
-      `${defaultURL}search/movie?${keyParam}&language=en-US&page=1&include_adult=${text}`
+      `${defaultURL}search/movie?${keyParam}&language=en-US&page=1&include_adult=false&query=${text}`
     );
     return await response.json();
   },

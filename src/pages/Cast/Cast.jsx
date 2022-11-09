@@ -1,7 +1,7 @@
 import { useFetchCredits } from 'hooks/useFetchCredits';
 import './Cast.css';
 
-export function Cast() {
+export default function Cast() {
   const credits = useFetchCredits();
   return (
     credits && (

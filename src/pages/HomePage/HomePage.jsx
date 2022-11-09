@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { MoviesAPI } from 'servises/moviesAPI';
 
-export function HomePage() {
+export default function HomePage() {
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     MoviesAPI.fetchMoviesTrending().then(setMovies);
@@ -16,7 +17,9 @@ export function HomePage() {
         <ul>
           {movies.map(({ title, name, id }) => (
             <li key={id}>
-              <Link to={`/movies/${id}`}>{title || name}</Link>
+              <Link to={`/movies/${id}`} state={{ from: location }}>
+                {title || name}
+              </Link>
             </li>
           ))}
         </ul>
